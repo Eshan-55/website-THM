@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover Ella, Sri Lanka. Explore mountain views, tea trails, waterfalls and local experiences.">
+    <meta name="theme-color" content="#173b32">
+    <title>Discover Ella | Sri Lanka Hill Country</title>
+
+    <style>
+        :root {
+            --forest: #173b32;
+            --green: #2f6b53;
+            --lime: #d9e8bd;
+            --cream: #f7f5ee;
+            --ink: #1e2924;
+            --muted: #66736c;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            color: var(--ink);
+            background: var(--cream);
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1140px, 92%);
+            margin: auto;
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 5;
+            color: var(--white);
+        }
+
+        .nav {
+            height: 82px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .brand {
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+        }
+
+        .brand span {
+            color: var(--lime);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 26px;
+            font-size: 0.92rem;
+        }
+
+        nav a {
+            opacity: 0.92;
+        }
+
+        nav a:hover {
+            color: var(--lime);
+        }
+
+        .menu {
+            display: none;
+            padding: 8px 12px;
+            border: 1px solid #ffffff88;
+            border-radius: 9px;
+            background: none;
+            color: var(--white);
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        .hero {
+            min-height: 680px;
+            display: flex;
+            align-items: center;
+            color: var(--white);
+            background:
+                linear-gradient(90deg, rgba(9, 28, 23, 0.78), rgba(9, 28, 23, 0.2)),
+                url("home.jpeg") center / cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 720px;
+            padding: 130px 0 80px;
+        }
+
+        .eyebrow {
+            color: var(--lime);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 18px 0 24px;
+            font-family: Georgia, serif;
+            font-size: clamp(3.2rem, 8vw, 6.4rem);
+            font-weight: 500;
+            line-height: 0.98;
+        }
+
+        .hero p {
+            max-width: 590px;
+            color: #f2f4ee;
+            font-size: 1.12rem;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 14px 22px;
+            border: 0;
+            border-radius: 5px;
+            background: var(--lime);
+            color: var(--forest);
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--white);
+        }
+
+        section {
+            padding: 88px 0;
+        }
+
+        .section-kicker {
+            color: var(--green);
+            font-size: 0.76rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            margin: 10px 0 18px;
+            color: var(--forest);
+            font-family: Georgia, serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 500;
+            line-height: 1.1;
+        }
+
+        .intro {
+            max-width: 700px;
+            color: var(--muted);
+            font-size: 1.04rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 55px;
+        }
+
+        .about-img {
+            width: 100%;
+            height: 440px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .stats {
+            display: flex;
+            gap: 35px;
+            margin-top: 28px;
+        }
+
+        .stat strong {
+            display: block;
+            color: var(--green);
+            font: 2rem Georgia, serif;
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin-top: 35px;
+        }
+
+        .card {
+            overflow: hidden;
+            border-radius: 8px;
+            background: var(--white);
+            box-shadow: 0 8px 30px #173b3210;
+        }
+
+        .card img {
+            display: block;
+            width: 100%;
+            height: 230px;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 22px;
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            color: var(--forest);
+            font: 1.55rem Georgia, serif;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--green);
+            font-size: 0.9rem;
+            font-weight: 800;
+        }
+
+        .experience {
+            background: var(--forest);
+            color: var(--white);
+        }
+
+        .experience h2 {
+            color: var(--white);
+        }
+
+        .experience .section-kicker {
+            color: var(--lime);
+        }
+
+        .experience .intro {
+            color: #d4ded8;
+        }
+
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 34px;
+        }
+
+        .experience-item {
+            padding: 24px;
+            border: 1px solid #ffffff30;
+            border-radius: 7px;
+        }
+
+        .experience-item b {
+            color: var(--lime);
+            font-size: 1.5rem;
+        }
+
+        .experience-item h3 {
+            margin: 12px 0 6px;
+        }
+
+        .experience-item p {
+            margin: 0;
+            color: #d4ded8;
+            font-size: 0.94rem;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            grid-template-rows: 190px 190px;
+            gap: 14px;
+            margin-top: 32px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            border-radius: 7px;
+            object-fit: cover;
+        }
+
+        .gallery img:first-child {
+            grid-row: span 2;
+        }
+
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            padding: 42px;
+            border-radius: 10px;
+            background: #e9eee5;
+        }
+
+        .contact-wrap h2 {
+            font-size: 2.8rem;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 12px;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #cbd5ca;
+            border-radius: 5px;
+            background: var(--white);
+            font: inherit;
+        }
+
+        .contact-form textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .contact-form .btn {
+            justify-self: start;
+            margin: 0;
+        }
+
+        footer {
+            padding: 28px 0;
+            background: #102a23;
+            color: #dce5df;
+            font-size: 0.88rem;
+        }
+
+        .footer-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        @media (max-width: 760px) {
+            nav {
+                position: absolute;
+                top: 72px;
+                left: 4%;
+                right: 4%;
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 18px;
+                border-radius: 8px;
+                background: var(--forest);
+            }
+
+            nav.open {
+                display: flex;
+            }
+
+            .menu {
+                display: block;
+            }
+
+            .hero {
+                min-height: 620px;
+            }
+
+            .about-grid,
+            .contact-wrap {
+                grid-template-columns: 1fr;
+            }
+
+            .cards,
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 160px 160px 160px;
+            }
+
+            .gallery img:first-child {
+                grid-row: auto;
+                grid-column: span 2;
+            }
+
+            .stats {
+                gap: 20px;
+            }
+
+            .contact-wrap {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container nav">
+            <a class="brand" href="#home">DISCOVER <span>ELLA</span></a>
+
+            <button class="menu" type="button" aria-label="Toggle navigation" aria-expanded="false">
+                ☰
+            </button>
+
+            <nav aria-label="Main navigation">
+                <a href="#home">Home</a>
+                <a href="#about">About Ella</a>
+                <a href="#attractions">Attractions</a>
+                <a href="#experiences">Experiences</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home">
+            <div class="container hero-content">
+                <div class="eyebrow">Sri Lanka · Hill Country</div>
+                <h1>Find your<br>way to Ella.</h1>
+                <p>
+                    Wander through emerald tea gardens, follow mountain trails
+                    and discover the unforgettable beauty of Sri Lanka’s hill country.
+                </p>
+                <a class="btn track-cta" href="#attractions" data-cta="explore_ella">
+                    Explore Ella
+                </a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container about-grid">
+                <div>
+                    <div class="section-kicker">A little introduction</div>
+                    <h2>Where the mountains meet the sky.</h2>
+                    <p class="intro">
+                        Ella is a scenic hill-country town in Sri Lanka’s Badulla District,
+                        known for its dramatic views, tea-growing landscapes and walking trails.
+                        It is a welcoming base for travellers who want to slow down and explore nature.
+                    </p>
+
+                    <div class="stats">
+                        <div class="stat">
+                            <strong>Green</strong>
+                            <span>Tea country scenery</span>
+                        </div>
+                        <div class="stat">
+                            <strong>Wild</strong>
+                            <span>Mountain adventures</span>
+                        </div>
+                        <div class="stat">
+                            <strong>Local</strong>
+                            <span>Culture & hospitality</span>
+                        </div>
+                    </div>
+                </div>
+
+                <img class="about-img" src="A.jpeg" alt="Green landscape in Ella, Sri Lanka">
+            </div>
+        </section>
+
+        <section id="attractions" style="background: #ffffff;">
+            <div class="container">
+                <div class="section-kicker">Explore the highlights</div>
+                <h2>Places to remember.</h2>
+                <p class="intro">
+                    From iconic railway views to rewarding hikes, make time for
+                    the landscapes that make Ella special.
+                </p>
+
+                <div class="cards">
+                    <article class="card">
+                        <img src="Nine arch.jpeg" alt="Nine Arch Bridge in Ella">
+                        <div class="card-body">
+                            <h3>Nine Arch Bridge</h3>
+                            <p>
+                                A celebrated railway viaduct set among lush hills and tea-country scenery.
+                                Check local railway information before planning around a train crossing.
+                            </p>
+                            <a class="track-cta" href="#contact" data-cta="nine_arch_visit">
+                                Plan a visit →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="Little adam peak.jpeg" alt="Mountain scenery at Little Adam’s Peak">
+                        <div class="card-body">
+                            <h3>Little Adam’s Peak</h3>
+                            <p>
+                                A popular hill walk with broad views across the surrounding mountains
+                                and valleys. Wear suitable footwear and check weather conditions.
+                            </p>
+                            <a class="track-cta" href="#contact" data-cta="little_adams_hike">
+                                Plan a hike →
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <img src="Ravana Falls.jpeg" alt="Ravana Falls near Ella">
+                        <div class="card-body">
+                            <h3>Ravana Falls</h3>
+                            <p>
+                                A striking waterfall near Ella, surrounded by greenery.
+                                Enjoy the view from safe public areas and follow local safety guidance.
+                            </p>
+                            <a class="track-cta" href="#contact" data-cta="ravana_falls_visit">
+                                Discover more →
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="experience" id="experiences">
+            <div class="container">
+                <div class="section-kicker">Make it your journey</div>
+                <h2>Experiences in Ella.</h2>
+                <p class="intro">
+                    Choose a slower pace or fill your days with outdoor discovery.
+                </p>
+
+                <div class="experience-grid">
+                    <div class="experience-item">
+                        <b>01</b>
+                        <h3>Scenic hiking</h3>
+                        <p>
+                            Explore local trails and viewpoints while respecting
+                            the natural environment.
+                        </p>
+                    </div>
+
+                    <div class="experience-item">
+                        <b>02</b>
+                        <h3>Tea country</h3>
+                        <p>
+                            Enjoy the rolling green landscapes and learn about
+                            the region’s tea-growing heritage.
+                        </p>
+                    </div>
+
+                    <div class="experience-item">
+                        <b>03</b>
+                        <h3>Local flavours</h3>
+                        <p>
+                            Discover Sri Lankan food and support locally owned
+                            cafés, guides and businesses.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <div class="section-kicker">A glimpse of the journey</div>
+                <h2>Ella in pictures.</h2>
+
+                <div class="gallery">
+                    <img src="1.jpeg" alt="Ella mountain landscape">
+                    <img src="2.jpeg" alt="Green hills in Ella">
+                    <img src="3.jpeg" alt="Scenic view of Ella">
+                    <img src="4.jpg" alt="Nature and forest in Ella">
+                    <img src="5.jpeg" alt="Beautiful landscape in Sri Lanka">
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container contact-wrap">
+                <div>
+                    <div class="section-kicker">Start planning</div>
+                    <h2>Your Ella story starts here.</h2>
+                    <p class="intro">
+                        Send us an enquiry about places to visit and experiences in Ella.
+                    </p>
+                    <p>
+                        <strong>Location:</strong> Ella, Badulla District, Sri Lanka
+                    </p>
+                </div>
+
+                <form class="contact-form" id="enquiryForm">
+                    <input name="name" type="text" placeholder="Your name" required>
+                    <input name="email" type="email" placeholder="Email address" required>
+                    <textarea name="message" placeholder="What would you like to explore?" required></textarea>
+                    <button class="btn" type="submit">Send enquiry</button>
+                    <small id="formMessage" aria-live="polite"></small>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-row">
+            <span>© 2026 Discover Ella</span>
+            <span>Ella, Sri Lanka</span>
+        </div>
+    </footer>
+
+    <script>
+        const menuButton = document.querySelector(".menu");
+        const navigation = document.querySelector("nav");
+
+        menuButton.addEventListener("click", function () {
+            navigation.classList.toggle("open");
+
+            const isOpen = navigation.classList.contains("open");
+            menuButton.setAttribute("aria-expanded", isOpen);
+        });
+
+        navigation.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", function () {
+                navigation.classList.remove("open");
+                menuButton.setAttribute("aria-expanded", "false");
+            });
+        });
+
+        document.querySelectorAll(".track-cta").forEach(function (link) {
+            link.addEventListener("click", function () {
+                window.dataLayer = window.dataLayer || [];
+
+                window.dataLayer.push({
+                    event: "tourism_cta_click",
+                    cta_name: link.dataset.cta,
+                    page_section: link.closest("section")?.id || "unknown"
+                });
+            });
+        });
+
+        const enquiryForm = document.getElementById("enquiryForm");
+
+        enquiryForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            window.dataLayer = window.dataLayer || [];
+
+            window.dataLayer.push({
+                event: "tourism_lead_submit",
+                form_name: "ella_enquiry_form"
+            });
+
+            document.getElementById("formMessage").textContent =
+                "Thank you! Your enquiry has been recorded in this demo.";
+
+            enquiryForm.reset();
+        });
+    </script>
+</body>
+</html>
